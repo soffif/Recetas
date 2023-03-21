@@ -1,0 +1,21 @@
+{
+    "name": "Libro",
+    "version": "0.0.1",
+    "description": "Libro de recetas - Segundo proyecto",
+    "main": "server.js",
+    "author": "Sofia Cerdas",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^3.21.2",
+        "mongoose": "~5.11.19",
+        "multer": "~0.1.6",
+        "nodemailer": "^5.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.11.0"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "license": "ISC"
+}

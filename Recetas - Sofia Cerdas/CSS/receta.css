@@ -1,0 +1,180 @@
+html{
+  scroll-behavior: smooth;
+}
+body {
+  margin: auto;
+}
+table{
+  text-align: center;
+}
+
+.pag1{
+  background: no-repeat;
+  background-size: 100%;
+  background-size:cover;
+  background-image: url("imagenEstilos");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.new{
+  background-color: rgba(188,103,103,255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modDiv{
+  margin-bottom: 20px;
+}
+
+td.datos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+textarea{
+  margin-left: 5px;
+  display: inline-flex;
+  align-items: center; 
+  font-family: 'Montserrat', serif;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 20px 1px rgba(0,0,0,0.1);
+}
+table{
+  font-family: 'Montserrat', serif;
+  background-color: whitesmoke;
+  border-radius: 10%;
+} 
+td.borde{
+  font-weight: bold;
+  border-bottom: 1px #bc676738 solid;
+}
+td.border{
+  border-bottom: 1px #bc676738 solid;
+}
+label{
+  font-family: 'Montserrat', serif;
+  font-size: 17.5px;
+  font-weight: bold;
+  }
+input{
+  margin-left: 5px;
+  display: inline-flex;
+  align-items: center; 
+  font-family: 'Montserrat', serif;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 20px 1px rgba(0,0,0,0.1);
+}
+.tusDatos{ 
+  background-color: whitesmoke;
+  margin-top: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.3);
+  padding: 10px;
+
+}
+table.tabla{
+  margin-top: 20px;
+  padding: 15px;
+}
+table.tabla{
+    box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.3);
+    width: 795px;
+    height: 50px;
+}
+input#Ingredientes,input#Pasos{
+  height: 50px;
+  width: 200px;
+}
+
+/* ESTILOS BOTÓN SLIDE RIGHT */
+.ov-btn-slide-right {
+  background: #fff; /* color de fondo */
+  color: rgba(188,103,103,255); /* color de fuente */
+  border: 2px solid rgba(188,103,103,255); /* tamaño y color de borde */
+  padding: 8px;
+  border-radius: 5px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+}
+.ov-btn-slide-right:hover {
+  color: #fff; /* color de fuente hover */
+}
+.ov-btn-slide-right::after {
+  content: "";
+  background: rgba(188,103,103,255); /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.ov-btn-slide-right:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+/* ESTILOS BOTÓN SLIDE RIGHT */
+.ov-btn-slide-right2 {
+  margin-top: 5px;
+  background: whitesmoke; /* color de fondo */
+  color: rgba(188,103,103,255); /* color de fuente */
+  border: none;
+  padding: 8px;
+  border-radius: 10px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+.ov-btn-slide-right2:hover {
+  color: #ca816f; /* color de fuente hover */
+  box-shadow: 0 0 5px 1px rgba(231, 191, 191, 0.692);
+}
+.ov-btn-slide-right2::after {
+  content: "";
+  background: #ca816f; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.ov-btn-slide-right2:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+
+

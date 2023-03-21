@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <title>Login</title>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+
+
+  <input type="text" placeholder="Nombre" id="Nombre" />
+  <input type="text" placeholder="Apellidos" id="Apellido" />
+  <input type="text" placeholder="Email" id="Email" />
+  <input type="text" placeholder="Rol" id="TipoUsuario" />
+  <input type="password" placeholder="Password" id="Password" />
+  <input type="file" id="Foto" />
+
+  <input type="button" value="Guardar" onclick="guardarUsuario()">
+
+  <table class="table align-middle">
+    <tr>
+      <td>
+        Nombre
+      </td>
+      <td>
+        Apellidos
+      </td>
+      <td>
+        Email
+      </td>
+      <td>
+        Rol
+      </td>
+      <td>
+        Contraseña 
+      </td>
+      <td>
+        Foto
+      </td>
+    </tr>
+    <tbody id="tBody"></tbody>
+  </table>
+
+</body>
+<script src="personaJavascript"></script>
+<script>
+  //Todas las funciones Javascript, para Guardar, ListaU, Modificar y Eliminar usuarios
+
+  let usuarioInstanciado = new Persona(),
+base64 = "";
+
+/*Inicio de imagenes a base 64*/
+$("#Foto").change(function(){  
+    readURL(this) ;
+});
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e){
+              base64=e.target.result;
+            }
+      reader.readAsDataURL(input. files[0]);
+    }
+}
+
+
+  function guardarUsuario() {
+    
+    /*Agarra la clase "Persona y los IDs que contienen los inputs/textareas"*/
+    let usuarioInstanciado = new Persona(0,
+    document.getElementById("Nombre").value,
+    document.getElementById("Apellido").value,
+    document.getElementById("Email").value,
+    document.getElementById("TipoUsuario").value,
+    document.getElementById("Password").value,
+    base64
+    );
+    
+    /*Funcion que guarda -Guardar es una funcion en mi clase "Persona"-*/
+      usuarioInstanciado.Guardar().then(function(response){
+        console.log("Success!", response);
+        alert("Tu usuario se ha guardado con exito");
+        localStorage.setItem("listaU",JSON.stringify(response)); /*Almacenar mis datos en un array tipo string*/
+        document.getElementById('tBody').innerHTML = "";
+        /*Vaciar la tabla*/
+
+        
+        for(let elemento in response){
+                
+                document.getElementById('tBody').innerHTML += /*Agrega los valores que se digitaron en el cuarpo de la tabla con el ID "tBody"*/
+                '<tr><td>' + response[elemento].Nombre + '</td>' +
+                '<td>' + response[elemento].Apellido + '</td>' +
+                '<td>' + response[elemento].Email + '</td>' +
+                '<td>' + response[elemento].TipoUsuario + '</td>'+
+                '<td>' + response[elemento].Password + '</td>'+
+                `<td><img src='${response[elemento].Foto}' style='height:50px'/></td>`+
+                '<td><input type="button" value="Modificar" class="ov-btn-slide-right2" onclick="modificarMongo(\''+response[elemento]._id +'\')" /> </td>'+
+                '<td><input type="button" class="ov-btn-slide-right2" value="Eliminar" onclick="eliminarMongo(\''+response[elemento]._id +'\')" /> </td>' +
+                '</tr>' ;
+            } /*Los botones me llevan a las funciones respectivas de modicar y eliminar datos; enviando el RESPECTIVO id del elemento */
+
+        }, function(error){
+          console.log("Failed!", response);
+          alert("Error!" + error);
+        });
+}
+
+</script>
+</html>

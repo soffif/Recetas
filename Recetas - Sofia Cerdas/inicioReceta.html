@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/faviconReceta" type="image/x-icon">
+    <link rel="stylesheet" href="recetaEstilos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" 
+    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Recetas</title>
+</head>
+<body>
+    <div class="pag1">
+        <div>        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+            </script>
+
+<h1 style="font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; font-size: 8vh; color: #c89e90;">Libro de Recetas</h1>
+
+<h2 style="font-family: 'Montserrat', sans-serif; font-size: 20px; margin-top: -20px; margin-left: 20px;">Crea y anota tus propias recetas en este maravilloso libro!</h2>
+<a href="#new" class="ov-btn-slide-right">Empezar</a> 
+<!-- Lleva a una nueva section -->
+</div>
+</div>
+    
+    <div class="new" id="new">
+        <div class="tusDatos" id="tD">
+    <table> 
+        <!-- tabla con los datos -->
+        <tr>
+            <td class="datos"> 
+                <label>Nombre de tu receta: <input type="text" id="NombreReceta" class="cssText" name="NombreReceta" /></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="datos">
+                <label>Tus ingredientes: </label> <textarea type="text" id="Ingredientes" class="cssText" name="Ingredientes"></textarea> 
+            </td>
+        </tr>
+        <tr>
+            <td class="datos">
+                <label>Pasos a seguir:</label>
+                <textarea name="Pasos" id="Pasos" class="cssText" ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="datos">    
+                <label>Tiempo de cocción: <input type="number" id="TiempoCoccion" name="TiempoCoccion" /></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="datos">  
+                <label>Fecha de receta: <input type="date" id="FechaReceta" name="FechaReceta" /></label>
+            </td>
+        </tr>
+        <tr>
+            <td class="datos">      
+                <label>Imagen de tu receta: <input type="file" id="ImagenReceta" name="ImagenReceta" style="width: 39%;" /></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="ov-btn-slide-right2" onclick="botonGuardar()" value="Guardar receta"/>  
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <div style="float: right;">
+        <table style="border: 20;" class="tabla">
+            <!-- tabla que rellena los datos que se colocan -->
+            <thead>
+                <tr style="margin: 5px;">
+                    <td class="borde">
+                        Nombre de la receta 
+                    </td>
+                    <td class="borde">
+                        Ingredientes 
+                    </td>
+                    <td class="borde">
+                        Pasos a seguir
+                    </td>
+                    <td class="borde">
+                        Tiempo de cocción
+                    </td>
+                    <td class="borde">
+                        Fecha de la receta
+                    </td>
+                    <td class="borde">
+                        Imagen de la receta
+                    </td>
+                    <td class="borde">
+                        Modificar
+                    </td>
+                    <td class="borde">
+                        Eliminar
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="tBody"></tbody> 
+        </table>
+    </div>
+    
+    <div class="modDiv"> 
+        <!-- tabla en la que se modifican los datos -->
+        <table style="box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.3); margin-top: 20px;   padding: 15px; margin-top: 25px;
+        ">
+            <tr>
+                <td>
+                    <label>Id: <input type="text" id="idReceta" disabled/> </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="datos">
+                    <label>Nuevo nombre de tu receta:<input type="text" id="nombreRecetaMod"/> </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="datos">
+                    <label>Nuevos ingredientes de la receta: </label>
+                    <textarea name="ingredientes" id="ingredientesMod" class="cssText" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="datos">
+                        <label>Nuevos pasos de la receta: </label>
+                        <textarea name="pasos" id="pasosMod" class="cssText" ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="datos">
+                        <label>Nuevo tiempo de cocción:<input type="number" id="tiempoCoccionMod"/> </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="datos">
+                        <label>Nueva fecha de la receta:<input type="date" id="fechaMod"/> </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="datos">
+                        <label>Nueva imagen de la receta:<input type="file" id="imagenRecetaMod" style="width: 36%;"/> </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="btnModifica" class="ov-btn-slide-right2" onclick="modificarEnBD()" value="Modificar"/> 
+</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>        
+
+</body>
+<script src="recetaJavascript"></script>
+<script>
+
+/*recetaInstanciada es la variable que me obtiene mi clase*/
+let recetaInstanciada = new Libro(),
+base64 = "";
+
+/*Inicio de imagenes a base 64*/
+$("#ImagenReceta").change(function(){  
+    readURL(this) ;
+});
+
+$("#imagenRecetaMod").change(function () {
+            readURL(this);
+        });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e){
+              base64=e.target.result;
+            }
+      reader.readAsDataURL(input. files[0]);
+    }
+}
+/*Fin de la funcion que pasa a base64*/
+
+
+function botonGuardar() {
+    
+    document.getElementById('tD').style.display = ("table");
+
+    /*Agarra la clase "Libro y los IDs que contienen los inputs/textareas"*/
+    let recetaInstanciada = new Libro(0,
+    document.getElementById("NombreReceta").value,
+    document.getElementById("Ingredientes").value,
+    document.getElementById("Pasos").value,
+    document.getElementById("TiempoCoccion").value,
+    document.getElementById("FechaReceta").value,
+    base64
+    );
+    
+    /*Funcion que guarda -Guardar es una funcion en mi clase "Libro"-*/
+    recetaInstanciada.Guardar().then(function(response){
+        console.log("Success!", response);
+        alert("Tu receta se ha guardado con exito");
+        localStorage.setItem("listaR",JSON.stringify(response)); /*Almacenar mis datos en un array tipo string*/
+        document.getElementById('tBody').innerHTML = "";
+        /*Vaciar la tabla*/
+
+        
+        for(let elemento in response){
+
+            const fecha = new Date(response[elemento].FechaReceta),
+            dia = (fecha.getDate() +1).toString().padStart('0'),
+            mes = (fecha.getMonth() + 1).toString().padStart(2,'0'),
+            anio = fecha.getFullYear();
+            const fechaFormateada = `${dia}/${mes}/${anio}`;
+            /*Me guarda la fecha en un formato predeterminado por estas variables "anio", "fecha" y "dia"*/
+                
+                document.getElementById('tBody').innerHTML += /*Agrega los valores que se digitaron en el cuarpo de la tabla con el ID "tBody"*/
+                '<tr><td class="border">' + response[elemento].NombreReceta + '</td>' +
+                '<td class="border">' + response[elemento].Ingredientes + '</td>' +
+                '<td class="border">' + response[elemento].Pasos + '</td>' +
+                '<td class="border">' + response[elemento].TiempoCoccion + '</td>'+
+                '<td class="border">' + fechaFormateada + '</td>'+
+                `<td class="border"><img src='${response[elemento].ImagenReceta}' style='height:50px'/></td>`+
+                '<td><input type="button" value="Modificar" class="ov-btn-slide-right2" onclick="modificarMongo(\''+response[elemento]._id +'\')" /> </td>'+
+                '<td><input type="button" class="ov-btn-slide-right2" value="Eliminar" onclick="eliminarMongo(\''+response[elemento]._id +'\')" /> </td>' +
+                '</tr>' ;
+            } /*Los botones me llevan a las funciones respectivas de modicar y eliminar datos; enviando el RESPECTIVO id del elemento */
+
+        }, function(error){
+          console.log("Failed!", response);
+          alert("Error!" + error);
+        });
+}
+
+function modificarMongo(idObjMongo)
+    {
+        for(let elemento in JSON.parse(localStorage.getItem("listaR"))){ /*Permitir que la variable elemento acceda a mi array con todos los datos con la variable "idObjMongo"*/
+                if(JSON.parse(localStorage.getItem("listaR"))[elemento]._id==idObjMongo){
+                    /*Agarra el valor de los inputs y lo modifica poniendo el ID del nuevo input que me modificara*/
+                    document.getElementById("idReceta").value=JSON.parse(localStorage.getItem("listaR"))[elemento]._id;
+                    document.getElementById("nombreRecetaMod").value=JSON.parse(localStorage.getItem("listaR"))[elemento].NombreReceta;
+                    document.getElementById("ingredientesMod").value=JSON.parse(localStorage.getItem("listaR"))[elemento].Ingredientes;
+                    ingredientes = document.getElementById("ingredientesMod")
+                    ingredientes.style.height = `${ingredientes.scrollHeight}px`;
+                    document.getElementById("pasosMod").value=JSON.parse(localStorage.getItem("listaR"))[elemento].Pasos;
+                    pasos = document.getElementById("pasosMod")
+                    pasos.style.height = `${pasos.scrollHeight}px`; /*Me modifica la altura según lo que el usuario digite */
+                    document.getElementById("tiempoCoccionMod").value=JSON.parse(localStorage.getItem("listaR"))[elemento].TiempoCoccion;
+                    document.getElementById("fechaMod").value=JSON.parse(localStorage.getItem("listaR"))[elemento].fechaFormateada;
+                    base64=JSON.parse(localStorage.getItem("listaR"))[elemento].ImagenReceta;
+                    break;
+                }
+            }
+    }
+
+    function modificarEnBD()
+    {
+        /*Toma el valor de los nuevos inputs y lo modifca en los inputs anteriores*/
+        recetaInstanciada._id = document.getElementById("idReceta").value;
+        recetaInstanciada.NombreReceta = document.getElementById("nombreRecetaMod").value;
+        recetaInstanciada.Ingredientes = document.getElementById("ingredientesMod").value;
+        recetaInstanciada.Pasos = document.getElementById("pasosMod").value;
+        recetaInstanciada.TiempoCoccion = document.getElementById("tiempoCoccionMod").value;
+        recetaInstanciada.FechaReceta = document.getElementById("fechaMod").value;
+        recetaInstanciada.ImagenReceta= base64;
+        recetaInstanciada.Modificar().then(function (response) {
+        alert("Dato Modificado");
+        document.getElementById("tBody").innerHTML = "";
+        /*Me vacia la tabla*/
+                for (var elemento in response) {
+                    const fecha = new Date(response[elemento].FechaReceta),
+                    dia = (fecha.getDate() +1).toString().padStart('0'),
+                    mes = (fecha.getMonth() + 1).toString().padStart(2,'0'),
+                    anio = fecha.getFullYear();
+                    const fechaFormateada = `${dia}/${mes}/${anio}`;
+                
+                    /*Me rellena la tabla con los nuevos datos*/
+                    document.getElementById('tBody').innerHTML +=
+                    '<tr><td class="border">' + response[elemento].NombreReceta + '</td>' +
+                    '<td class="border">' + response[elemento].Ingredientes + '</td>' +
+                    '<td class="border">' + response[elemento].Pasos + '</td>' +
+                    '<td class="border">' + response[elemento].TiempoCoccion + '</td>'+
+                    '<td class="border">' + fechaFormateada + '</td>'+
+                    `<td class="border"><img src='${response[elemento].ImagenReceta}' style='height:60px'/></td>`+ /*Esto me permite colocar la imagen en un formato jpg, png, jpeg, etc*/
+                    '<td><input type="button" value="Modificar" class="ov-btn-slide-right2" onclick="modificarMongo(\''+response[elemento]._id +'\')" /> </td>'+
+                    '<td><input type="button" value="Eliminar" class="ov-btn-slide-right2" onclick="eliminarMongo(\''+response[elemento]._id +'\')" /> </td>' +
+                    '</tr>' ;
+                }
+            });
+    }
+
+function eliminarMongo(idObjMongo) {
+        recetaInstanciada._id = idObjMongo;
+        recetaInstanciada.Eliminar().then(
+            function(response) { /*A la funcion eliminar se le pasa el ID del array para que se puedan borrar todos los datos */
+                alert('Eliminado de la base de datos');
+                document.getElementById('tBody').innerHTML = "";
+                
+                for(let elemento in response){
+
+                const fecha = new Date(response[elemento].FechaReceta),
+                dia = (fecha.getDate() +1).toString().padStart('0'),
+                mes = (fecha.getMonth() + 1).toString().padStart(2,'0'),
+                anio = fecha.getFullYear();
+                const fechaFormateada = `${dia}/${mes}/${anio}`;
+                
+                document.getElementById('tBody').innerHTML +=
+                '<tr><td class="border">' + response[elemento].NombreReceta + '</td>' +
+                '<td class="border">' + response[elemento].Ingredientes + '</td>' +
+                '<td class="border">' + response[elemento].Pasos + '</td>' +
+                '<td class="border">' + response[elemento].TiempoCoccion + '</td>'+
+                '<td class="border">' + fechaFormateada + '</td>'+
+                `<td class="border"><img src='${response[elemento].ImagenReceta}' style='height:50px'/></td>`+
+                '<td><input type="button" class="ov-btn-slide-right2" value="Modificar"onclick="modificarMongo(\''+response[elemento]._id +'\')" /> </td>'+
+                '<td><input type="button" value="Eliminar" class="ov-btn-slide-right2" onclick="eliminarMongo(\''+response[elemento]._id +'\')" /> </td>' +
+                '</tr>' ;
+                }
+    },function (err) {
+
+        });
+    }
+
+
+</script>
+<script>
+    const myText = document.getElementById('Pasos');
+    const myTextI = document.getElementById('Ingredientes');
+    const myTextII = document.getElementById('pasosMod');
+    const myTextIII = document.getElementById('ingredientesMod');
+
+    myText.style.cssText = `height: ${myText.scrollHeight}px; resize: none`; /*Esto funciona para que el input se acople al tamaño del texto que digite el usuario */
+    myText.addEventListener('input', function(){
+        this.style.height = 'auto';
+        this.style.height = `${this.scrollHeight}px`;
+    });
+
+    myTextI.style.cssText = `height: ${myTextI.scrollHeight}px; resize: none`;
+    myTextI.addEventListener('input', function(){
+        this.style.height = 'auto';
+        this.style.height = `${this.scrollHeight}px`;
+    });
+
+    myTextII.style.cssText = `height: ${myTextII.scrollHeight}px; resize: none`;
+    myTextII.addEventListener('input', function(){
+        this.style.height = 'auto';
+        this.style.height = `${this.scrollHeight}px`;
+    });
+
+    myTextIII.style.cssText = `height: ${myTextIII.scrollHeight}px; resize: none`;
+    myTextIII.addEventListener('input', function(){
+        this.style.height = 'auto';
+        this.style.height = `${this.scrollHeight}px`;
+    });
+</script>
+</html>
